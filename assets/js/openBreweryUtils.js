@@ -13,7 +13,7 @@ export async function getAll() {
 }
 
 export async function getRandomBrewery() {
-  console.log('Getting random brewery');
+  console.log('Getting random brewery.');
   const allBreweries = await getAll();
 
   if (!allBreweries || allBreweries.length === 0) {
