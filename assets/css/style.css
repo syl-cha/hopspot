@@ -23,12 +23,11 @@ body {
 h1,
 h2 {
     font-family: "Squatina", serif;
-    letter-spacing: 0.1rem;
+    text-transform: uppercase;
     color: var(--secondary-color);
 }
 
 h1 {
-    text-transform: uppercase;
     font-size: 4rem;
     color: var(--primary-color);
 }
