@@ -41,6 +41,10 @@ i {
     font-size: 90%;
 }
 
+strong {
+    font-weight: 700;
+}
+
 /* Structure
 ****************************************/
 .row {
