@@ -11,3 +11,53 @@
 html {
     scroll-behavior: smooth;
 }
+
+body {
+    font-size: 16px;
+    background-color: var(--background-color);
+    color: var(--corpus-color);
+    font-family: "Finlandica", sans-serif;
+    font-weight: 300;
+}
+
+h1,
+h2 {
+    font-family: "Squatina", serif;
+    letter-spacing: 0.1rem;
+    color: var(--secondary-color);
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 4rem;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+i {
+    font-size: 90%;
+}
+
+/* Structure
+****************************************/
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Header
+****************************************/
+header {
+    padding: 2rem 0;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+}
