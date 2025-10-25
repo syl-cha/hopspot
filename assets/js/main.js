@@ -1,5 +1,13 @@
-import { getAll, getFiltered, getMetadata} from './services/openBreweryService.js'
-import { getRandomBrewery, getAmericanStates } from './utils/openBreweryUtils.js';
+import {
+  getAll,
+  getFiltered,
+  getMetadata,
+} from './services/openBreweryService.js';
+import {
+  getRandomBrewery,
+  getAmericanStates,
+} from './utils/openBreweryUtils.js';
+import { BreweryCardBuilder } from './builders/builders.js';
 $(document).ready(async function () {
   const $breweryDiv = $('#brewery');
   $breweryDiv.text("Récupération d'une brasserie.");
@@ -7,11 +15,20 @@ $(document).ready(async function () {
     const fetchedBreweries = await getAll();
     const brewery = getRandomBrewery(fetchedBreweries);
     if (brewery) {
-      const breweryHtmlContent = `
-        <h2>${brewery.name}</h2>
-        <p><a href='${brewery.website_url}' >Site</a></p>
-        `;
-      $breweryDiv.html(breweryHtmlContent);
+      const breweryCard = new BreweryCardBuilder(brewery.name);
+      breweryCard
+        .addAddress(brewery.street)
+        .addCity(brewery.city)
+        .addState(brewery.state_province)
+        .addCountry(brewery.country)
+        .addPhone(brewery.phone)
+        .addWebsite(brewery.website_url)
+        .addType(brewery.brewery_type);
+      // const breweryHtmlContent = `
+      //   <h2>${brewery.name}</h2>
+      //   <p><a href='${brewery.website_url}' >Site</a></p>
+      //   `;
+      $breweryDiv.html(breweryCard.render());
     } else {
       $breweryDiv.text('Aucune brasserie trouvée...');
     }
@@ -21,7 +38,11 @@ $(document).ready(async function () {
   }
 
   try {
-    const fetchedFiltered = await getFiltered('breweries', 'San Diego', 'California');
+    const fetchedFiltered = await getFiltered(
+      'breweries',
+      'San Diego',
+      'California',
+    );
     console.log(fetchedFiltered);
   } catch (error) {
     console.log('Failed retrieving brewery: ', error);
@@ -48,5 +69,4 @@ $(document).ready(async function () {
   }
 
   // TODO: Search func, modular cleanup, logic for map render integration and raw UX
-
 });
