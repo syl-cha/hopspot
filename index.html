@@ -9,38 +9,116 @@
             type="image/svg+xml"
         />
         <link rel="stylesheet" href="./assets/css/main.css" />
-        <title>Hopspot</title>
+        <title>Brasseurs du monde</title>
     </head>
     <body>
-        <header class="row">
-            <div class="header-content">
-                <h1><i class="nf nf-md-hops"></i>Hopspot</h1>
-                <h2>The breweries one hops in, on the spot</h2>
-            </div>
+        <header role="banner" class="row">
+            <nav role="navigation">
+                <div class="header-content">
+                    <a class="nav-logo" href="/"
+                        ><i class="nf nf-md-hops"></i
+                    ></a>
+                    <h1 class="nav-title">Brasseurs du monde</h1>
+                </div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#search">Recherche</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map">Carte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">À propos</a>
+                    </li>
+                </ul>
+            </nav>
         </header>
-        <section class="row filterMenu">
-            <div class="stateSelector">
-                <select id="states"></select>
+        <main class="main-container">
+            <!--Hero section-->
+            <section class="hero-container">
+                <div class="row">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Brasseurs du monde</h1>
+                        <div id="random-brewery" class="brewery-card"></div>
+                    </div>
+                </div>
+            </section>
+            <!--eof Hero section -->
+
+            <!-- Search section -->
+            <section class="search-container">
+                <div class="row">
+                    <div class="search-content">
+                        <h2 class="search-title">Recherchez des brasseries</h2>
+                        <div class="search-form">
+                            <div class="row filterMenu">
+                                <div class="stateSelector">
+                                    <select id="states"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="search-result">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Ut congue orci eget lectus luctus malesuada.
+                            Fusce elementum urna ex. Etiam turpis velit, tempor
+                            non sagittis sit amet, accumsan ut ante.
+                            <strong>Vivamus</strong> consectetur elit nulla, eu
+                            iaculis sem tincidunt id. Lorem ipsum dolor sit
+                            amet, consectetur adipiscing elit. Nullam massa
+                            nunc, consectetur a risus id, fermentum hendrerit
+                            diam. Donec ornare sapien ullamcorper lectus aliquam
+                            posuere. Curabitur pulvinar magna laoreet odio
+                            dapibus, nec condimentum dui vulputate. Fusce
+                            volutpat egestas pharetra. Morbi ornare nunc ac
+                            nulla tempor mollis. Curabitur vel eros hendrerit,
+                            luctus sem congue, consectetur elit. Sed scelerisque
+                            eleifend facilisis. Ut mattis malesuada aliquam.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!--eof Search section-->
+
+            <!--Map section -->
+            <section class="map-container">
+                <div class="row">
+                    <h2 class="map-title">Carte</h2>
+                    <div class="map-content">
+                        <div class="map-embedded"></div>
+                        <div class="brewery-card"></div>
+                    </div>
+                </div>
+            </section>
+            <!--eof Map section -->
+        </main>
+
+        <!-- Pied de page -->
+        <footer role="contentinfo">
+            <div class="row">
+                <div class="footer-content">
+                    <p>
+                        <i class="nf nf-md-copyleft"></i>
+                        2025 Brasseurs du monde.
+                    </p>
+                    <nav class="footer-navigation">
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a class="footer-link" href="#contact"
+                                    >Contact</a
+                                >
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-        </section>
-        <section class="row display">
-            <div id="brewery" class="brewery"></div>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                congue orci eget lectus luctus malesuada. Fusce elementum urna
-                ex. Etiam turpis velit, tempor non sagittis sit amet, accumsan
-                ut ante. <strong>Vivamus</strong> consectetur elit nulla, eu
-                iaculis sem tincidunt id. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nullam massa nunc, consectetur a
-                risus id, fermentum hendrerit diam. Donec ornare sapien
-                ullamcorper lectus aliquam posuere. Curabitur pulvinar magna
-                laoreet odio dapibus, nec condimentum dui vulputate. Fusce
-                volutpat egestas pharetra. Morbi ornare nunc ac nulla tempor
-                mollis. Curabitur vel eros hendrerit, luctus sem congue,
-                consectetur elit. Sed scelerisque eleifend facilisis. Ut mattis
-                malesuada aliquam.
-            </p>
-        </section>
+        </footer>
+        <!--eof Pied de page-->
+
+        <!--Scripts-->
         <script
             type="text/javascript"
             src="./assets/js/libs/jquery-3.7.1.min.js"

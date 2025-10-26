@@ -19,6 +19,9 @@ body {
     font-family: "Finlandica", sans-serif;
     font-weight: 300;
 }
+section {
+    padding: 4rem 0rem;
+}
 
 h1,
 h2 {

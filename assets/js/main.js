@@ -9,7 +9,7 @@ import {
 } from './utils/openBreweryUtils.js';
 import { BreweryCardBuilder } from './builders/builders.js';
 $(document).ready(async function () {
-  const $breweryDiv = $('#brewery');
+  const $breweryDiv = $('#random-brewery');
   $breweryDiv.text("Récupération d'une brasserie.");
   try {
     const fetchedBreweries = await getAll();
