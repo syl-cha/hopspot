@@ -193,3 +193,37 @@ header > nav > ul > li {
 .brewery-card-country {
     font-weight: 600;
 }
+
+/* Hero section
+**********************************************************/
+
+.hero-container {
+    background-image: url("../images/hero_background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-container h1 {
+    color: var(--secondary-color);
+    font-size: 9rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+    line-height: 0.8;
+    /*0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.6);*/
+}
