@@ -49,15 +49,20 @@ export class BreweryCardBuilder {
       this.data.state ||
       this.data.country
     ) {
+      html += '<div class="brewery-card-details">';
       html += '<div class="brewery-card-address-container">';
       if (this.data.address) {
         html += `<p class="brewery-card-address">${this.data.address}</p>`;
       }
-      if (this.data.city) {
-        html += `<p class="brewery-card-city">${this.data.city}</p>`;
-      }
-      if (this.data.state) {
-        html += `<p class="brewery-card-state">${this.data.state}</p>`;
+      if (this.data.city || this.data.state) {
+        html += '<div class="brewery-card-lococation">';
+        if (this.data.city) {
+          html += `<p class="brewery-card-city">${this.data.city}${this.data.state ? ',' : ''}</p>`;
+        }
+        if (this.data.state) {
+          html += `<p class="brewery-card-state">${this.data.state}</p>`;
+        }
+        html += '</div>';
       }
       if (this.data.country) {
         html += `<p class="brewery-card-country">${this.data.country}</p>`;
@@ -69,7 +74,7 @@ export class BreweryCardBuilder {
     // ajout des données téléphonique
     if (this.data.phone) {
       html += '<div class="brewery-card-phone-container">';
-      html += `<p class="brewery-card-phone"><i class="nf nf-md-phone_classic"></i>${this.data.phone}</p>`;
+      html += `<p class="brewery-card-phone"><i class="nf nf-md-phone_classic"></i><a class="brewery-card-phone-link" href='tel:${this.data.phone}' >${this.data.phone}</a></p>`;
       html += '</div>';
       // fin phone
     }
@@ -90,6 +95,7 @@ export class BreweryCardBuilder {
       // fin type
     }
 
+    html += '</div>';
     html += '</div>';
     return html;
   }

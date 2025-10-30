@@ -33,19 +33,26 @@ section {
 }
 
 h1,
-h2 {
+h2,
+h3 {
     font-family: "Londrina Solid", display;
-    text-transform: uppercase;
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 h1 {
     font-size: 4rem;
     font-weight: 900;
-    color: var(--primary-color);
+    text-transform: uppercase;
 }
 
 h2 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+h3 {
     font-size: 2rem;
     font-weight: 300;
 }
@@ -129,4 +136,60 @@ header > nav > ul {
 
 header > nav > ul > li {
     margin: 0 0.5rem;
+}
+
+/* Carte
+**************************************************/
+
+.brewery-card {
+    background-color: var(--secondary-color-lightest);
+    padding: 1rem 1rem 1rem 2rem;
+    border-radius: 0.3rem;
+}
+
+.brewery-card p {
+    margin: 0;
+    padding: 0;
+}
+
+.brewery-card h3 {
+    margin: 1.5rem 0.5rem 1rem 0;
+    padding: 0;
+}
+
+.brewery-card-details {
+    margin-left: 1rem;
+}
+
+.brewery-card-details i {
+    font-size: 1.1rem;
+    margin-right: 0.5rem;
+}
+
+.brewery-card-details a {
+    color: var(--primary-color);
+}
+
+.brewery-card-details a:hover {
+    color: var(--primary-color-light);
+}
+
+.brewery-card-address-container {
+    margin-bottom: 0.5rem;
+}
+
+.brewery-card-lococation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 0.3rem;
+}
+
+.brewery-card-state {
+    font-style: italic;
+}
+
+.brewery-card-country {
+    font-weight: 600;
 }
