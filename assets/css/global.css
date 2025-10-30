@@ -105,20 +105,20 @@ header h1 {
     font-size: 2rem;
 }
 
-header a {
+header > nav a {
     color: var(--primary-color);
 }
 
-header a:hover {
+header > nav a:hover {
     color: var(--primary-color-light);
 }
 
-header a > i {
+header > nav a > i {
     font-size: 2rem;
     margin-right: 1rem;
 }
 
-header ul {
+header > nav > ul {
     display: flex;
     flex-direction: row;
     list-style-type: none;
@@ -127,6 +127,6 @@ header ul {
     justify-content: end;
 }
 
-header ul > li {
+header > nav > ul > li {
     margin: 0 0.5rem;
 }
