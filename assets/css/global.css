@@ -1,9 +1,18 @@
+/* Reset
+****************************************/
+
+html {
+    box-sizing: border-box;
+}
 *,
-*:after,
-*:before {
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 /* Communs
@@ -16,8 +25,8 @@ body {
     font-size: 16px;
     background-color: var(--background-color);
     color: var(--corpus-color);
-    font-family: "Finlandica", sans-serif;
-    font-weight: 300;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
 }
 section {
     padding: 4rem 0rem;
@@ -25,18 +34,20 @@ section {
 
 h1,
 h2 {
-    font-family: "Squatina", serif;
+    font-family: "Londrina Solid", display;
     text-transform: uppercase;
     color: var(--secondary-color);
 }
 
 h1 {
     font-size: 4rem;
+    font-weight: 900;
     color: var(--primary-color);
 }
 
 h2 {
     font-size: 2rem;
+    font-weight: 300;
 }
 
 i {
