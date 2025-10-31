@@ -84,7 +84,7 @@ export class BreweryCardBuilder {
       // ajout du site
       if (this.data.website) {
         html += '<div class="brewery-card-website-container">';
-        html += `<p class="brewery-card-website"><i class="nf nf-md-web"></i><a class="brewery-card-link" href='${this.data.website}' >Site</a></p>`;
+        html += `<p class="brewery-card-website"><i class="nf nf-md-web"></i><a class="brewery-card-link" href='${this.data.website}'  target='_blank'>Site</a></p>`;
         html += '</div>';
         // fin site
       }
