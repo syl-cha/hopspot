@@ -22,10 +22,6 @@ $(document).ready(async function () {
         .addPhone(brewery.phone)
         .addWebsite(brewery.website_url)
         .addType(brewery.brewery_type);
-      // const breweryHtmlContent = `
-      //   <h2>${brewery.name}</h2>
-      //   <p><a href='${brewery.website_url}' >Site</a></p>
-      //   `;
       $breweryDiv.html(breweryCard.render());
     } else {
       $breweryDiv.text('Aucune brasserie trouvée...');
@@ -35,13 +31,29 @@ $(document).ready(async function () {
     $breweryDiv.text('Erreur dans la récupération des données.');
   }
 
+  let fetchedFiltered = [];
   try {
-    const fetchedFiltered = await getFiltered(
-      'breweries',
-      'San Diego',
-      'California',
-    );
+    fetchedFiltered = await getFiltered('breweries', 'San Diego', 'California');
+    console.log('fetchedFiltered:');
     console.log(fetchedFiltered);
+    /*
+           /!\ For testing grid system for search result ONLY /!\
+    */
+    if (fetchedFiltered.length !== 0) {
+      const $resultGrid = $('#search-result');
+      $.each(fetchedFiltered, (_, brewery) => {
+        const breweryCard = new BreweryCardBuilder(brewery.name);
+        breweryCard
+          .addAddress(brewery.street)
+          .addCity(brewery.city)
+          .addState(brewery.state_province)
+          .addCountry(brewery.country)
+          .addPhone(brewery.phone)
+          .addWebsite(brewery.website_url)
+          .addType(brewery.brewery_type);
+        $resultGrid.append(breweryCard.render());
+      });
+    }
   } catch (error) {
     console.log('Failed retrieving brewery: ', error);
     $breweryDiv.text('Erreur dans la récupération des données.');
