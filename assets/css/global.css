@@ -223,15 +223,67 @@ header > nav > ul > li {
     margin-right: auto;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
 
 .hero-container h1 {
+    flex: 1 1 50%;
     color: var(--secondary-color);
     font-size: 9rem;
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
     line-height: 0.8;
     /*0 0 10px rgba(255, 255, 255, 0.8),
         0 0 20px rgba(255, 255, 255, 0.6);*/
+}
+
+/* Formulaire de recherche
+**************************************************/
+
+.search-content {
+    width: 100%;
+}
+
+.search-content > form {
+    width: 100%;
+}
+
+.search-content > form > fieldset {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--secondary-color-lightest);
+    border: 0;
+    border-radius: 0.3rem;
+}
+
+.search-content > form > fieldset > legend {
+    width: 100%;
+    float: left;
+    font-size: 0.8;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    padding: 0;
+    color: var(--primary-color);
+}
+
+.selector-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.selector {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 10rem;
+}
+
+.selector > label {
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: var(--primary-color);
+    margin-bottom: 0.2rem;
 }
