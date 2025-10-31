@@ -6,6 +6,8 @@ import {
 import {
   getRandomBrewery,
   getAmericanStates,
+  getAmericanTypes,
+  toTitleCase,
 } from './utils/openBreweryUtils.js';
 import { BreweryCardBuilder } from './builders/builders.js';
 $(document).ready(async function () {
@@ -52,21 +54,34 @@ $(document).ready(async function () {
   let statesList = [];
   const $statesSelect = $('#states');
 
+  let typesList = [];
+  const $typeSelect = $('#type');
+
   try {
     const fetchedMetadata = await getMetadata();
     statesList = getAmericanStates(fetchedMetadata);
+    typesList = getAmericanTypes(fetchedMetadata)
   } catch (error) {
     console.log('Failed retrieving metas: ', error);
     $breweryDiv.text('Erreur dans la récupération des metadonnées.');
   }
 
   console.log(statesList);
+  console.log(typesList);
 
   if ($statesSelect.length && statesList.length) {
     $.each(statesList, function (_, state) {
       $statesSelect.append(new Option(state, state)); // https://stackabuse.com/bytes/adding-options-to-a-select-element-using-jquery/
     });
   }
+
+  if ($typeSelect.length && typesList.length) {
+    $.each(typesList, function (_, type) {
+      $typeSelect.append(new Option(toTitleCase(type), type)); // https://stackabuse.com/bytes/adding-options-to-a-select-element-using-jquery/
+    });
+  }
+
+
 
   // TODO: Search func, modular cleanup, logic for map render integration and raw UX
 });

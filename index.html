@@ -55,8 +55,30 @@
                         <div class="search-form">
                             <div class="row filterMenu">
                                 <div class="stateSelector">
+                                    <div class="selectorName">State:</div>
                                     <select id="states"></select>
                                 </div>
+                            </div>
+                            <div class="row filterMenu">
+                                <div class="typeSelector">
+                                    <div class="selectorName">Type:</div>
+                                    <select id="type"></select>
+                                </div>
+                            </div>
+                            <div class="cityInput">
+                                <label for="cityName">City:</label> 
+                                <input type="text"
+                                       id="cityName"
+                                       name="cityName"
+                                       required
+                                       minlength="2"
+                                       maxlength="28"
+                                       size="30" />
+                            </div>
+                            <div class="row" id="searchButton">
+                                <button>
+                                    Search
+                                </button>
                             </div>
                         </div>
                     </div>

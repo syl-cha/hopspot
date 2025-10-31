@@ -29,3 +29,26 @@ export function getAmericanStates(metadata_obj) {
   });
   return state_list;
 }
+
+export function getAmericanTypes(metadata_obj) { 
+  if (!metadata_obj || metadata_obj.length === 0) {
+    console.log('No metadata found.');
+    return null;
+  }
+    // root object destructuring 
+  let {total, by_state, by_type} = metadata_obj;  
+  let type_list = [];
+  let i = 0;
+  Object.entries(by_type).forEach(([state, count]) => {
+    type_list[i] = state;
+    i++
+  });
+  return type_list;
+}
+
+export function toTitleCase(str) {
+  return str.replace(
+    /\w\S*/g, //  the /xxx/g is plain syntax base logic for RegExp, \w matches all word characters, \S is all char that is non-whitespace
+    text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+  );
+}

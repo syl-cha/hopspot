@@ -68,6 +68,11 @@ strong {
 a {
     text-decoration: none;
 }
+
+label {
+    display: block;
+}
+
 /* Structure
 ****************************************/
 .row {
@@ -77,6 +82,7 @@ a {
     margin-left: auto;
     margin-right: auto;
 }
+
 
 /* Header
 ****************************************/
