@@ -148,7 +148,8 @@ header > nav > ul > li {
 **************************************************/
 
 .brewery-card {
-    max-width: 20rem;
+    width: 100%;
+    height: 100%;
     background-color: var(--secondary-color-lightest);
     padding: 1rem 1rem 1rem 2rem;
     border-radius: 0.3rem;
@@ -307,6 +308,17 @@ header > nav > ul > li {
     font-family: var(--font-sans);
 }
 
+/* Résultats de la recherche
+*******************************************************/
+
+.search-result {
+    margin-top: 2rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+    gap: 1.5rem;
+}
+
 /* Footer
 ********************************************************/
 
@@ -345,10 +357,6 @@ footer nav > ul {
     justify-content: space-between;
     list-style-type: none;
 }
-
-/*footer nav > ul > li {
-    flex: 1 1 10rem;
-}*/
 
 footer .copyright {
     text-align: center;
