@@ -4,7 +4,7 @@ import {
   getMetadata,
 } from './services/openBreweryService.js';
 import {
-  getRandomBrewery,
+  getRandomBreweryFromList,
   getAmericanStates,
   getAmericanTypes,
   toTitleCase,
