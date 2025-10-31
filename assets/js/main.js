@@ -1,5 +1,5 @@
 import {
-  getAll,
+  getRandom,
   getFiltered,
   getMetadata,
 } from './services/openBreweryService.js';
@@ -14,9 +14,10 @@ $(document).ready(async function () {
   const $breweryDiv = $('#random-brewery');
   $breweryDiv.text("Récupération d'une brasserie.");
   try {
-    const fetchedBreweries = await getAll();
-    const brewery = getRandomBrewery(fetchedBreweries);
-    if (brewery) {
+    // const fetchedBreweries = await getAll();
+    const breweryRequest = await getRandom();
+    if (breweryRequest) {
+      const brewery = breweryRequest[0];
       const breweryCard = new BreweryCardBuilder(brewery.name);
       breweryCard
         .addAddress(brewery.street)

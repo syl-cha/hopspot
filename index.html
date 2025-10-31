@@ -51,36 +51,30 @@
             <section class="search-container">
                 <div class="row">
                     <div class="search-content">
-                        <h2 class="search-title">Recherchez des brasseries</h2>
-                        <div class="search-form">
-                            <div class="row filterMenu">
-                                <div class="stateSelector">
-                                    <div class="selectorName">State:</div>
-                                    <select id="states"></select>
-                                </div>
-                            </div>
-                            <div class="row filterMenu">
-                                <div class="typeSelector">
-                                    <div class="selectorName">Type:</div>
-                                    <select id="type"></select>
-                                </div>
-                            </div>
-                            <div class="cityInput">
-                                <label for="cityName">City:</label> 
-                                <input type="text"
-                                       id="cityName"
-                                       name="cityName"
-                                       required
-                                       minlength="2"
-                                       maxlength="28"
-                                       size="30" />
-                            </div>
-                            <div class="row" id="searchButton">
-                                <button>
-                                    Search
-                                </button>
-                            </div>
-                        </div>
+                        <h2>Recherchez des brasseries</h2>
+                        <form>
+                            <fieldset>
+                                <legend>Caractéristiques</legend>
+                                <div class="selector-container">
+                                    <div class="selector">
+                                        <label for="countries">Pays</label>
+                                        <select id="countries"></select>
+                                    </div>
+                                    <div class="selector">
+                                        <label for="states">État/Province</label>
+                                        <select id="states"></select>
+                                    </div>
+                                    <div class="selector">
+                                        <label for="town">Ville</label>
+                                        <select id="town"></select>
+                                    </div>
+                                    <div class="selector">
+                                        <label for="type">Type</label>
+                                        <select id="type"></select>
+                                    </div>
+                                <div>
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
                 <div class="row">
@@ -124,19 +118,29 @@
         <footer role="contentinfo">
             <div class="row">
                 <div class="footer-content">
-                    <p>
-                        <i class="nf nf-md-copyleft"></i>
-                        2025 Brasseurs du monde.
-                    </p>
-                    <nav class="footer-navigation">
-                        <ul class="footer-list">
-                            <li class="footer-item">
-                                <a class="footer-link" href="#contact"
-                                    >Contact</a
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#contact"> À propos </a>
+                            </li>
+                            <li>
+                                <a href="#contact"> Contact </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://github.com/syl-cha/hopspot"
+                                    target="_blank"
                                 >
+                                    Github
+                                </a>
                             </li>
                         </ul>
                     </nav>
+
+                    <p class="copyright">
+                        <i class="nf nf-md-copyleft"></i>
+                        2025 Brasseurs du monde.
+                    </p>
                 </div>
             </div>
         </footer>
