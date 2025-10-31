@@ -70,31 +70,34 @@ export class BreweryCardBuilder {
       html += '</div>';
       // fin adresse complète
     }
+    if (this.data.phone || this.data.website || this.data.type) {
+      html += '<div class="brewery-card-contact">';
 
-    // ajout des données téléphonique
-    if (this.data.phone) {
-      html += '<div class="brewery-card-phone-container">';
-      html += `<p class="brewery-card-phone"><i class="nf nf-md-phone_classic"></i><a class="brewery-card-phone-link" href='tel:${this.data.phone}' >${this.data.phone}</a></p>`;
+      // ajout des données téléphonique
+      if (this.data.phone) {
+        html += '<div class="brewery-card-phone-container">';
+        html += `<p class="brewery-card-phone"><i class="nf nf-md-phone_classic"></i><a class="brewery-card-phone-link" href='tel:${this.data.phone}' >${this.data.phone}</a></p>`;
+        html += '</div>';
+        // fin phone
+      }
+
+      // ajout du site
+      if (this.data.website) {
+        html += '<div class="brewery-card-website-container">';
+        html += `<p class="brewery-card-website"><i class="nf nf-md-web"></i><a class="brewery-card-link" href='${this.data.website}' >Site</a></p>`;
+        html += '</div>';
+        // fin site
+      }
+
+      // ajout du type
+      if (this.data.type) {
+        html += '<div class="brewery-card-type-container">';
+        html += `<p class="brewery-card-type"><i class="nf nf-md-factory"></i>${this.data.type}</p>`;
+        html += '</div>';
+        // fin type
+      }
       html += '</div>';
-      // fin phone
     }
-
-    // ajout du site
-    if (this.data.website) {
-      html += '<div class="brewery-card-website-container">';
-      html += `<p class="brewery-card-website"><i class="nf nf-md-web"></i><a class="brewery-card-link" href='${this.data.website}' >Site</a></p>`;
-      html += '</div>';
-      // fin site
-    }
-
-    // ajout du type
-    if (this.data.phone) {
-      html += '<div class="brewery-card-type-container">';
-      html += `<p class="brewery-card-type"><i class="nf nf-md-factory"></i>${this.data.type}</p>`;
-      html += '</div>';
-      // fin type
-    }
-
     html += '</div>';
     html += '</div>';
     return html;
