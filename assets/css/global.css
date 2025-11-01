@@ -22,11 +22,11 @@ html {
 }
 
 body {
-  font-size: 16px;
-  background-color: var(--background-color);
-  color: var(--corpus-color);
-  font-family: "IBM Plex Sans", sans-serif;
-  font-weight: 400;
+    font-size: 16px;
+    background-color: var(--background-color);
+    color: var(--corpus-color);
+    font-family: var(--font-sans);
+    font-weight: 400;
 }
 section {
   padding: 4rem 0rem;
@@ -35,8 +35,8 @@ section {
 h1,
 h2,
 h3 {
-  font-family: "Londrina Solid", display;
-  color: var(--primary-color);
+    font-family: var(--font-title);
+    color: var(--primary-color);
 }
 
 h1 {
@@ -68,6 +68,11 @@ strong {
 a {
   text-decoration: none;
 }
+
+label {
+    display: block;
+}
+
 /* Structure
 ****************************************/
 .row {
@@ -77,6 +82,7 @@ a {
   margin-left: auto;
   margin-right: auto;
 }
+
 
 /* Header
 ****************************************/
@@ -142,9 +148,11 @@ header > nav > ul > li {
 **************************************************/
 
 .brewery-card {
-  background-color: var(--secondary-color-lightest);
-  padding: 1rem 1rem 1rem 2rem;
-  border-radius: 0.3rem;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color-lightest);
+    padding: 1rem 1rem 1rem 2rem;
+    border-radius: 0.3rem;
 }
 
 .brewery-card p {
@@ -152,13 +160,9 @@ header > nav > ul > li {
   padding: 0;
 }
 
-.brewery-card h3 {
-  margin: 1.5rem 0.5rem 1rem 0;
-  padding: 0;
-}
-
-.brewery-card-details {
-  margin-left: 1rem;
+.brewery-card-name {
+    margin: 1rem 0.5rem 1rem 0;
+    padding: 0;
 }
 
 .brewery-card-details i {
@@ -194,6 +198,17 @@ header > nav > ul > li {
   font-weight: 600;
 }
 
+.brewery-card-contact {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.brewery-card-contact > div {
+    flex: 1 1 33%;
+}
+
 /* Hero section
 **********************************************************/
 
@@ -210,32 +225,142 @@ header > nav > ul > li {
 }
 
 .hero-content {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .hero-container h1 {
-  color: var(--secondary-color);
-  font-size: 9rem;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
-  line-height: 0.8;
-  /*0 0 10px rgba(255, 255, 255, 0.8),
+    flex: 1 1 50%;
+    color: var(--secondary-color);
+    font-size: 9rem;
+    text-shadow: 2px 2px 8px rgba(50, 50, 50, 0.7);
+    line-height: 0.8;
+    /*0 0 10px rgba(255, 255, 255, 0.8),
         0 0 20px rgba(255, 255, 255, 0.6);*/
 }
 
-/* Carte
-**************************************************/
-
-#map-target {
-  height: 400px;
-  width: 100%;
+#random-brewery {
+    box-shadow: 2px 2px 8px rgba(50, 50, 50, 0.7);
 }
 
-.map-content {
-  margin-left: 2rem;
+/* Formulaire de recherche
+**************************************************/
+
+.search-content {
+    width: 100%;
+}
+
+.search-content > form {
+    width: 100%;
+}
+
+.search-content > form > fieldset {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--secondary-color-lightest);
+    border: 0;
+    border-radius: 0.3rem;
+}
+
+.search-content > form > fieldset > legend {
+    width: 100%;
+    float: left;
+    font-size: 0.8;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    padding: 0;
+    color: var(--primary-color);
+}
+
+.selector-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.selector {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 10rem;
+}
+
+.selector > label {
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: var(--primary-color);
+    margin-bottom: 0.2rem;
+}
+
+.selector > select {
+    width: 100%;
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 0.3rem;
+    padding: 0.2rem 0.5rem;
+    font-family: var(--font-sans);
+}
+
+/* Résultats de la recherche
+*******************************************************/
+
+.search-result {
+    margin-top: 2rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+    gap: 1.5rem;
+}
+
+/* Footer
+********************************************************/
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+footer a {
+    color: var(--secondary-color-light);
+}
+
+footer a:hover {
+    color: var(--secondary-color-lightest);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+footer nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer nav > ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+footer .copyright {
+    text-align: center;
+    width: 100%;
+    font-size: 0.7rem;
+    font-weight: 300;
 }

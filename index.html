@@ -53,15 +53,38 @@
       </section>
       <!--eof Hero section -->
 
-      <!-- Search section -->
-      <section class="search-container">
-        <div class="row">
-          <div class="search-content">
-            <h2 class="search-title">Recherchez des brasseries</h2>
-            <div class="search-form">
-              <div class="row filterMenu">
-                <div class="stateSelector">
-                  <select id="states"></select>
+            <!-- Search section -->
+            <section class="search-container">
+                <div class="row">
+                    <div class="search-content">
+                        <h2>Recherchez des brasseries</h2>
+                        <form>
+                            <fieldset>
+                                <legend>Caractéristiques</legend>
+                                <div class="selector-container">
+                                    <div class="selector">
+                                        <label for="countries">Pays</label>
+                                        <select id="countries"></select>
+                                    </div>
+                                    <div class="selector">
+                                        <label for="states">État/Province</label>
+                                        <select id="states"></select>
+                                    </div>
+                                    <div class="selector">
+                                        <label for="town">Ville</label>
+                                        <select id="town"></select>
+                                    </div>
+                                    <div class="selector">
+                                        <label for="type">Type</label>
+                                        <select id="type"></select>
+                                    </div>
+                                <div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="search-result" class="search-result"></div>
                 </div>
               </div>
             </div>
@@ -102,16 +125,34 @@
               <h2 id="detail-name"></h2>
               <p>Type: <span id="detail-type"></span></p>
 
-              <address id="detail-address"></address>
+        <!-- Pied de page -->
+        <footer role="contentinfo">
+            <div class="row">
+                <div class="footer-content">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#contact"> À propos </a>
+                            </li>
+                            <li>
+                                <a href="#contact"> Contact </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://github.com/syl-cha/hopspot"
+                                    target="_blank"
+                                >
+                                    Github
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
 
-              <p>Tél: <span id="detail-phone"></span></p>
-
-              <a
-                id="detail-website"
-                href="#"
-                target="_blank"
-                class="button"
-              ></a>
+                    <p class="copyright">
+                        <i class="nf nf-md-copyleft"></i>
+                        2025 Brasseurs du monde.
+                    </p>
+                </div>
             </div>
           </div>
         </div>
