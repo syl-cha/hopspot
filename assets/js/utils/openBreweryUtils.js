@@ -78,3 +78,12 @@ export function getCountriesList() {
   }
   return postProcessedList;
 }
+
+export function sanitizeUndefined(string) { 
+  if (string === undefined) {
+    return '';
+  }
+  else return string;
+}
+
+/* Search Brewery function */

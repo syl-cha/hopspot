@@ -1,6 +1,7 @@
 import {
   getRandom,
   getFiltered,
+  searchApi,
   getMetadata,
 } from './services/openBreweryService.js';
 import { 
@@ -113,8 +114,45 @@ $(document).ready(async function () {
     })
   }
 
+  const $searchButton = $('#search-button');
+  const $searchResult = $('.search-result');
+  console.log($searchResult);
+  $($searchButton).on('click', async function() { 
+    console.log('search registered');
+    console.log($('#countries')[0].value);
+    console.log($('#states')[0].value);
+    console.log($('#town')[0].value);
+    console.log($('#type')[0].value);
+
+    var country = $('#countries')[0] === undefined ? '' : $('#countries')[0].value;
+    var state = $('#state')[0] === undefined ? '' : $('#states')[0].value ;
+    var town = $('#town')[0] === undefined ? '' : $('#town')[0].value;
+    var type = $('#type')[0] === undefined? '' : $('#type')[0].value;
+
+    // A.S: now we need to pre-specify and construct the request ftowards the API.
+    // edge-case: US pre-set as country, but if we set another couyntry, then the State input dialogue needs to be hidden and it's value not
+    // taken into account when forming the query.
+
+    // It now occured to me that unline other langs, js will not support custom argument syntax, so the 
+    // request will be an object instead.
+
+    let searchQuery = {country, state, town, type};
+    console.log(searchQuery);
+    try { 
+     const response = await searchApi(searchQuery);
+     console.log(response);
+    }
+    catch (error) {
+    console.log('Failed retrieving API query: ', error);
+    $searchResult.text('Erreur dans la récupération des metadonnées.');
+    }
+
+  });
+  console.log($searchButton)
+
   // TODO: Search func, modular cleanup, logic for map render integration and raw UX
 });
+
 
 function displayBreweryDetails(brewery) {
   // masquer la liste des resultats et afficher la zone de detail
