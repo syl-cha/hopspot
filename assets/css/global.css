@@ -307,6 +307,10 @@ header > nav > ul > li {
     font-family: var(--font-sans);
 }
 
+#search-icon {
+    margin-bottom: 0.2rem;
+}
+
 /* Résultats de la recherche
 *******************************************************/
 

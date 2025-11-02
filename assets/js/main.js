@@ -108,9 +108,7 @@ $(document).ready(async function () {
   let $countriesList = $('#countries-list');
   // over all countries in the string[] and append them as options to the countries dataList element
   if ($countriesList.length) {
-    console.log('started');
     $.each(countriesList, function(i, country) {
-      console.log(i + " " + country);
       $countriesList.append(new Option(country, country));
     })
   }
