@@ -4,7 +4,11 @@ import {
   searchApi,
   getMetadata,
 } from "./services/openBreweryService.js";
-import { getAmericanStates, toTitleCase } from "./utils/openBreweryUtils.js";
+import { 
+  getAmericanStates, 
+  getAmericanTypes, 
+  getCountriesList, 
+  toTitleCase } from "./utils/openBreweryUtils.js";
 import { initializeMap, setBreweryMarker } from "./services/map.js";
 import { BreweryCardBuilder } from "./builders/builders.js";
 $(document).ready(async function () {
