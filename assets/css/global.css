@@ -333,13 +333,17 @@ header > nav > ul > li {
     margin-top: 1.5rem;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 /* deux éléments prennent de la place */
-.map-embedded,
+/*.map-embedded,
 #brewery-details-area {
     width: 100%;
+}*/
+.map-embedded {
+    margin-right: 2rem;
 }
 
 @media (min-width: 900px) {

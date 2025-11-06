@@ -8,7 +8,7 @@ let mapInstance = null;
 export function initializeMap(
   elementId,
   defaultLat = 40.7128,
-  defaultLon = -74.006
+  defaultLon = -74.006,
 ) {
   if (mapInstance) {
     // reinitialisation de carte s'elle existe deja
@@ -20,8 +20,8 @@ export function initializeMap(
   mapInstance = L.map(elementId).setView([defaultLat, defaultLon], 5); //zoom 5 ?
 
   // ajout le fond de la carte
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap contributors",
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors',
   }).addTo(mapInstance);
 }
 
@@ -37,7 +37,7 @@ export function setBreweryMarker(brewery) {
   const lon = parseFloat(brewery.longitude);
   if (isNaN(lat) || isNaN(lon) || lat === 0 || lon === 0) {
     console.error(
-      `Coordonnées invalides pour ${brewery.name}. Marquer non affiché.`
+      `Coordonnées invalides pour ${brewery.name}. Marquer non affiché.`,
     );
     return;
   }
@@ -45,7 +45,7 @@ export function setBreweryMarker(brewery) {
   L.marker([lat, lon])
     .addTo(mapInstance)
     .bindPopup(
-      `<b>${brewery.name}</b><br>${brewery.street || "Adresse non spécifiée"}`
+      `<b>${brewery.name}</b><br>${brewery.street || 'Adresse non spécifiée'}`,
     )
     .openPopup();
   mapInstance.setView([lat, lon], 15);
