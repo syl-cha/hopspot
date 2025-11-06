@@ -1,6 +1,6 @@
-import Reveal from '../reveal/dist/reveal.esm.js';
-import RevealHighlight from '../reveal/plugin/highlight/highlight.esm.js';
-import RevealMarkdown from '../reveal/plugin/markdown/markdown.esm.js';
+import Reveal from '../dist/reveal.esm.js';
+import RevealHighlight from '../plugin/highlight/highlight.esm.js';
+import RevealMarkdown from '../plugin/markdown/markdown.esm.js';
 
 $(document).ready(function () {
   const $presentation = $('#presentation');
