@@ -21,7 +21,10 @@ $(document).ready(async function () {
     const breweryRequest = await getRandom();
     if (breweryRequest) {
       const brewery = breweryRequest[0];
-      const breweryCard = new BreweryCardBuilder(brewery.name);
+      const breweryCard = new BreweryCardBuilder(
+        brewery.name,
+        'random-brewery-id',
+      );
       breweryCard
         .addAddress(brewery.street)
         .addCity(brewery.city)
@@ -53,7 +56,7 @@ $(document).ready(async function () {
     if (fetchedFiltered.length !== 0) {
       const $resultGrid = $('#search-result');
       $.each(fetchedFiltered, (_, brewery) => {
-        const breweryCard = new BreweryCardBuilder(brewery.name);
+        const breweryCard = new BreweryCardBuilder(brewery.name, brewery.id);
         breweryCard
           .addAddress(brewery.street)
           .addCity(brewery.city)
@@ -154,7 +157,7 @@ $(document).ready(async function () {
 });
 
 function displayBreweryDetails(brewery) {
-  const breweryCard = new BreweryCardBuilder(brewery.name);
+  const breweryCard = new BreweryCardBuilder(brewery.name, 'map-brewery-id');
   breweryCard
     .addAddress(brewery.street)
     .addCity(brewery.city)

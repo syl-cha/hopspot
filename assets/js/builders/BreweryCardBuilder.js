@@ -1,6 +1,7 @@
 export class BreweryCardBuilder {
-  constructor(name) {
+  constructor(name, id) {
     this.name = name;
+    this.id = id;
     this.data = {};
   }
 
@@ -40,7 +41,7 @@ export class BreweryCardBuilder {
   }
 
   render() {
-    let html = '<div class="brewery-card">';
+    let html = `<div class="brewery-card" id="${this.id}">`;
     html += `<h3 class="brewery-card-name">${this.name}</h3>`;
     // ajout des données dans la carte si présentes
     if (
