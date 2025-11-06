@@ -1,7 +1,7 @@
-## Slide 1
+# Slide 1
 A paragraph with some text and a [link](https://hakim.se).
 ---
-## Slide 2
+# Slide 2
 
 ```js [1-2|3|4]
     let a = 1;
@@ -10,6 +10,6 @@ A paragraph with some text and a [link](https://hakim.se).
     c(3);
 ```
 ---
-## Slide 3
+# Slide 3
 
 Encore du blabla...
