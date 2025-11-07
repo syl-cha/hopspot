@@ -48,8 +48,14 @@ $(document).ready(async function () {
   $resultGrid.on('click', '.brewery-card', function () {
     const cardId = $(this).attr('id'); // retrieving the ID of the card that was clicked
     console.log('This brewery was clicked !');
+    // save last ID for later use
+    const lastCardId = breweryDisplayedOnMap.id;
     breweryDisplayedOnMap = getBreweryById(fetchedFiltered, cardId);
     console.log(breweryDisplayedOnMap);
+    // update the card selected
+    const currentCardId = breweryDisplayedOnMap.id;
+    $(`#${lastCardId}`).removeClass('brewery-card-selected');
+    $(`#${currentCardId}`).addClass('brewery-card-selected');
     // update brewery on map
     displayBreweryDetails(breweryDisplayedOnMap);
   });
@@ -175,43 +181,5 @@ function displayBreweryDetails(brewery) {
     .addType(brewery.brewery_type);
   const $breweryDiv = $('#brewery-details-area');
   $breweryDiv.html(breweryCard.render());
-  // masquer la liste des resultats et afficher la zone de detail
-  // $("#results-list").hide();
-
-  // $("#brewery-details-area").show();
-
-  // // mettre a jour les informations de la barsserie
-  // $("#detail-name").text(brewery.name);
-  // $("#detail-type").text(brewery.brewery_type);
-
-  // // format addresse complet
-  // const address = [
-  //   brewery.street,
-  //   `${brewery.city}, ${brewery.state_province}`,
-  //   brewery.country,
-  //   brewery.postal_code,
-  // ]
-  //   .filter((line) => line)
-  //   .join("<br>");
-  // $("#detail-address").html(address);
-
-  // // telephone
-  // if (brewery.phone) {
-  //   $("#detail-phone").text(`Tel: ${brewery.phone}`).parent().show();
-  // } else {
-  //   $("#detail-phone").parent().hide();
-  // }
-
-  // // site web
-  // const websiteURL = brewery.website_url;
-  // const $websiteLink = $("#detail-website");
-  // if (websiteURL) {
-  //   $websiteLink.attr("href", websiteURL);
-  //   $websiteLink.text("Visiter le site: ");
-  //   $websiteLink.show();
-  // } else {
-  //   $websiteLink.hide();
-  // }
-
   setBreweryMarker(brewery);
 }

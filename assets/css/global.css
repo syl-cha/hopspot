@@ -143,7 +143,7 @@ header > nav > ul > li {
     margin: 0 0.5rem;
 }
 
-/* Carte
+/* Carte d'identification des bières
 **************************************************/
 
 .brewery-card {
@@ -206,6 +206,10 @@ header > nav > ul > li {
 
 .brewery-card-contact > div {
     flex: 1 1 33%;
+}
+
+.brewery-card-selected {
+  outline: 5px solid var(--secondary-color);
 }
 
 /* Hero section
