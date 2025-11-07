@@ -1,16 +1,11 @@
-import {
-  getRandom,
-  getFiltered,
-  searchApi,
-  getMetadata,
-} from './services/openBreweryService.js';
+import { getRandom, getFiltered, searchApi, getMetadata } from './services/openBreweryService.js';
 import {
   getAmericanStates,
   getAmericanTypes,
   getCountriesList,
-  toTitleCase,
+  toTitleCase
 } from './utils/openBreweryUtils.js';
-import { getBreweryById } from './utils/searchUtils.js'
+import { getBreweryById } from './utils/searchUtils.js';
 import { initializeMap, setBreweryMarker } from './services/map.js';
 import { BreweryCardBuilder } from './builders/builders.js';
 let breweryDisplayedOnMap = {};
@@ -23,11 +18,8 @@ $(document).ready(async function () {
     const breweryRequest = await getRandom();
     if (breweryRequest) {
       const brewery = breweryRequest[0];
-      breweryDisplayedOnMap = {...brewery}
-      const breweryCard = new BreweryCardBuilder(
-        brewery.name,
-        'random-brewery-id',
-      );
+      breweryDisplayedOnMap = { ...brewery };
+      const breweryCard = new BreweryCardBuilder(brewery.name, 'random-brewery-id');
       breweryCard
         .addAddress(brewery.street)
         .addCity(brewery.city)
@@ -48,6 +40,20 @@ $(document).ready(async function () {
     $breweryDiv.text('Erreur dans la récupération des données.');
   }
 
+  /*
+   *   Search grid
+   */
+  const $resultGrid = $('#search-result');
+  // Click on card is catch by event delegation on the whole grid
+  $resultGrid.on('click', '.brewery-card', function () {
+    const cardId = $(this).attr('id'); // retrieving the ID of the card that was clicked
+    console.log('This brewery was clicked !');
+    breweryDisplayedOnMap = getBreweryById(fetchedFiltered, cardId);
+    console.log(breweryDisplayedOnMap);
+    // update brewery on map
+    displayBreweryDetails(breweryDisplayedOnMap);
+  });
+
   let fetchedFiltered = [];
   try {
     fetchedFiltered = await getFiltered('breweries', 'San Diego', 'California');
@@ -57,7 +63,6 @@ $(document).ready(async function () {
            /!\ For testing grid system for search result ONLY /!\
     */
     if (fetchedFiltered.length !== 0) {
-      const $resultGrid = $('#search-result');
       $.each(fetchedFiltered, (_, brewery) => {
         const breweryCard = new BreweryCardBuilder(brewery.name, brewery.id);
         breweryCard
@@ -70,15 +75,6 @@ $(document).ready(async function () {
           .addType(brewery.brewery_type);
         $resultGrid.append(breweryCard.render());
       });
-      // Once the grid is settled, we can add the event listener on each card
-      $resultGrid.on('click', '.brewery-card', function () {
-        const cardId = $(this).attr('id'); // retrieving the ID of the card that was clicked
-        console.log('This brewery was clicked !');
-        breweryDisplayedOnMap= getBreweryById(fetchedFiltered, cardId);
-        console.log(breweryDisplayedOnMap);
-        // update brewery on map
-        displayBreweryDetails(breweryDisplayedOnMap);
-      })
     }
   } catch (error) {
     console.log('Failed retrieving brewery: ', error);
@@ -140,8 +136,7 @@ $(document).ready(async function () {
     console.log($('#town')[0].value);
     console.log($('#type')[0].value);
 
-    var country =
-      $('#countries')[0] === undefined ? '' : $('#countries')[0].value;
+    var country = $('#countries')[0] === undefined ? '' : $('#countries')[0].value;
     var state = $('#state')[0] === undefined ? '' : $('#states')[0].value;
     var town = $('#town')[0] === undefined ? '' : $('#town')[0].value;
     var type = $('#type')[0] === undefined ? '' : $('#type')[0].value;
