@@ -154,6 +154,11 @@ header > nav > ul > li {
     border-radius: 0.3rem;
 }
 
+.brewery-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(75, 98, 29, 0.3);
+}
+
 .brewery-card p {
     margin: 0;
     padding: 0;
