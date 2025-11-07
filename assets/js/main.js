@@ -10,8 +10,10 @@ import {
   getCountriesList,
   toTitleCase,
 } from './utils/openBreweryUtils.js';
+import { getBreweryById } from './utils/searchUtils.js'
 import { initializeMap, setBreweryMarker } from './services/map.js';
 import { BreweryCardBuilder } from './builders/builders.js';
+let breweryDisplayedOnMap = {};
 $(document).ready(async function () {
   const $breweryDiv = $('#random-brewery');
   $breweryDiv.text("Récupération d'une brasserie.");
@@ -21,6 +23,7 @@ $(document).ready(async function () {
     const breweryRequest = await getRandom();
     if (breweryRequest) {
       const brewery = breweryRequest[0];
+      breweryDisplayedOnMap = {...brewery}
       const breweryCard = new BreweryCardBuilder(
         brewery.name,
         'random-brewery-id',
@@ -36,7 +39,7 @@ $(document).ready(async function () {
       $breweryDiv.html(breweryCard.render());
       setBreweryMarker(brewery);
       // affichage des details brewery
-      displayBreweryDetails(brewery);
+      displayBreweryDetails(breweryDisplayedOnMap);
     } else {
       $breweryDiv.text('Aucune brasserie trouvée...');
     }
@@ -67,6 +70,15 @@ $(document).ready(async function () {
           .addType(brewery.brewery_type);
         $resultGrid.append(breweryCard.render());
       });
+      // Once the grid is settled, we can add the event listener on each card
+      $resultGrid.on('click', '.brewery-card', function () {
+        const cardId = $(this).attr('id'); // retrieving the ID of the card that was clicked
+        console.log('This brewery was clicked !');
+        breweryDisplayedOnMap= getBreweryById(fetchedFiltered, cardId);
+        console.log(breweryDisplayedOnMap);
+        // update brewery on map
+        displayBreweryDetails(breweryDisplayedOnMap);
+      })
     }
   } catch (error) {
     console.log('Failed retrieving brewery: ', error);
