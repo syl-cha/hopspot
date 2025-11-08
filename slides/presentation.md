@@ -13,14 +13,11 @@ Sylvain Chambon
 
 ====
 
-# Slide 2
+## Choix techniques
 
-```js [1-2|3|4]
-    let a = 1;
-    let b = 2;
-    let c = x => 1 + 2 + x;
-    c(3);
-```
+- [Open Brewery DB](https://www.openbrewerydb.org/)
+- [Leaflet](https://leafletjs.com/)
+- [jQuery](https://jquery.com/)
 
 ====
 
@@ -150,3 +147,11 @@ $.each(fetchedFiltered, function (index, brewery) {
   $searchResult.append($card);
 });
 ```
+
+====
+
+# Futur
+
+- Pagination sur les réponses
+- Géolocalisation
+- Responsive
