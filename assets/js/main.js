@@ -1,9 +1,13 @@
-import { getRandom, searchApi, getMetadata } from './services/openBreweryService.js';
+import {
+  getRandom,
+  searchApi,
+  getMetadata,
+} from './services/openBreweryService.js';
 import {
   getAmericanStates,
   getAmericanTypes,
   getCountriesList,
-  toTitleCase
+  toTitleCase,
 } from './utils/openBreweryUtils.js';
 import { getBreweryById } from './utils/searchUtils.js';
 import { initializeMap, setBreweryMarker } from './services/map.js';
@@ -19,7 +23,10 @@ $(document).ready(async function () {
     if (breweryRequest) {
       const brewery = breweryRequest[0];
       breweryDisplayedOnMap = { ...brewery };
-      const breweryCard = new BreweryCardBuilder(brewery.name, 'random-brewery-id');
+      const breweryCard = new BreweryCardBuilder(
+        brewery.name,
+        'random-brewery-id',
+      );
       breweryCard
         .addAddress(brewery.street)
         .addCity(brewery.city)
@@ -43,9 +50,9 @@ $(document).ready(async function () {
   /*
    *   Search grid
    */
-  const $resultGrid = $('#search-result');
+  const $searchResult = $('#search-result');
   // Click on card is catch by event delegation on the whole grid
-  $resultGrid.on('click', '.brewery-card', function () {
+  $searchResult.on('click', '.brewery-card', function () {
     const cardId = $(this).attr('id'); // retrieving the ID of the card that was clicked
     console.log('This brewery was clicked !');
     // save last ID for later use
@@ -81,8 +88,8 @@ $(document).ready(async function () {
 
   try {
     const fetchedMetadata = await getMetadata();
-  statesList = getAmericanStates(fetchedMetadata) || [];
-  typesList = getAmericanTypes(fetchedMetadata) || [];
+    statesList = getAmericanStates(fetchedMetadata) || [];
+    typesList = getAmericanTypes(fetchedMetadata) || [];
   } catch (error) {
     console.log('Failed retrieving metas: ', error);
     $breweryDiv.text('Erreur dans la récupération des metadonnées.');
@@ -101,7 +108,7 @@ $(document).ready(async function () {
     // AS: Source - https://stackoverflow.com/a/8335332
     // Posted by user1074546, modified by community. See post 'Timeline' for change history
     // Retrieved 2025-11-08, License - CC BY-SA 3.0
-    $('#type option[value="micro"]').attr("selected", "selected"); // jquery for default micro selecti
+    $('#type option[value="micro"]').attr('selected', 'selected'); // jquery for default micro selecti
   }
 
   // AS: The appended new options are placed within the dropdown select menus with an inherent alphabetic order.
@@ -116,8 +123,8 @@ $(document).ready(async function () {
   }
 
   function toggleAmericanStateSelector() {
-  const currentCountry = ($countryInput.val() || '').trim().toLowerCase();
-  const isUnitedStates = currentCountry === US_COUNTRY_KEY;
+    const currentCountry = ($countryInput.val() || '').trim().toLowerCase();
+    const isUnitedStates = currentCountry === US_COUNTRY_KEY;
     if (isUnitedStates) {
       $stateSelector.show();
     } else {
@@ -130,7 +137,7 @@ $(document).ready(async function () {
   $countryInput.on('input change', toggleAmericanStateSelector);
 
   const $searchButton = $('#search-button');
-  const $searchResult = $('#search-result');
+  // const $searchResult = $('#search-result');  // already declared as $resultGrid : change it to $searchResult
 
   $searchButton.on('click', async function () {
     const rawCountry = ($countryInput.val() || '').trim(); // trim removes whitespaces in strings.
@@ -138,15 +145,14 @@ $(document).ready(async function () {
     const rawTown = ($townInput.val() || '').trim();
     const rawType = ($typeSelect.val() || '').trim();
 
-  const isUnitedStates = rawCountry.toLowerCase() === US_COUNTRY_KEY;
+    const isUnitedStates = rawCountry.toLowerCase() === US_COUNTRY_KEY;
     const searchQuery = {
       country: rawCountry || '',
       state: isUnitedStates ? rawState : '',
       town: rawTown || '',
-      type: rawType || ''
+      type: rawType || '',
     };
 
-    
     // A.S: now we need to pre-specify and construct the request ftowards the API.
     // edge-case: US pre-set as country, but if we set another couyntry, then the State input dialogue needs to be hidden and it's value not
     // taken into account when forming the query.
@@ -154,7 +160,7 @@ $(document).ready(async function () {
     // It now occured to me that unline other langs, js will not support custom argument syntax, so the
     // request will be an object instead.
 
-  $searchResult.empty().text('Recherche en cours...');
+    $searchResult.empty().text('Recherche en cours...');
 
     try {
       const breweries = await searchApi(searchQuery);

@@ -1,29 +1,46 @@
 <html>
     <head>
         <link rel="stylesheet" href="dist/reveal.css" />
-        <link rel="stylesheet" href="dist/theme/dracula.css" />
+        <link rel="stylesheet" href="dist/theme/blood.css" />
         <!-- Theme used for syntax highlighted code -->
-        <link rel="stylesheet" href="plugin/highlight/atom-one-light.css" />
+        <link rel="stylesheet" href="plugin/highlight/github.css" />
     </head>
     <body>
         <div class="reveal">
             <div class="slides">
-                <section data-markdown="presentation.md"></section>
+                <section
+                    data-markdown="presentation.md"
+                    data-separator="^\n====\n$"
+                    data-separator-vertical="^\n--\n$"
+                ></section>
             </div>
         </div>
         <script src="dist/reveal.js"></script>
         <script src="plugin/notes/notes.js"></script>
         <script src="plugin/markdown/markdown.js"></script>
         <script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/appearance/appearance.js"></script>
         <script>
             // More info about initialization & config:
             // - https://revealjs.com/initialization/
             // - https://revealjs.com/config/
             Reveal.initialize({
                 hash: true,
-
+                appearance: {
+                    // ...
+                    autoappear: true,
+                    autoelements: {
+                        "ul li": "animate__fadeInLeft",
+                        "ol li": "animate__fadeInRight",
+                    },
+                },
                 // Learn about plugins: https://revealjs.com/plugins/
-                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+                plugins: [
+                    RevealMarkdown,
+                    RevealHighlight,
+                    RevealNotes,
+                    Appearance,
+                ],
             });
         </script>
     </body>
