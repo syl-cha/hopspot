@@ -13,14 +13,28 @@ Sylvain Chambon
 
 ====
 
-# Slide 2
+# Le projet
 
-```js [1-2|3|4]
-    let a = 1;
-    let b = 2;
-    let c = x => 1 + 2 + x;
-    c(3);
-```
+Utilisation de [Open Brewery DB](https://www.openbrewerydb.org/)
+
+--
+
+## Le concept
+
+Application monopage (SPA)
+
+- Hero section
+- Formulaire de recherhe
+- Résultats sous forme de grille
+- Localisation sur une carte
+
+--
+
+## Les choix techniques
+
+- [Open Brewery DB](https://www.openbrewerydb.org/)
+- [Leaflet](https://leafletjs.com/)
+- [jQuery](https://jquery.com/)
 
 ====
 
@@ -28,9 +42,9 @@ Sylvain Chambon
 
 --
 
-## Les cartes
+## Les tuiles
 
-Classe `BreweyCardBuilder`
+Classe `BreweryCardBuilder`
 
 ```javascript
 export class BreweryCardBuilder {
@@ -46,7 +60,7 @@ export class BreweryCardBuilder {
 
 --
 
-## Les cartes
+## Les tuiles
 
 Une méthode par attribut à afficher
 
@@ -59,7 +73,7 @@ addAddress(address) {
 
 --
 
-## Les cartes
+## Les tuiles
 
 Une méthode `render()`
 
@@ -84,7 +98,7 @@ render() {
 
 --
 
-## Les cartes
+## Les tuiles
 
 ID de la brasserie est celle de la carte.
 
@@ -96,7 +110,7 @@ let html = `<div class="brewery-card" id="${this.id}">`;
 
 ## L'affichage
 
-Event listerner : délégation au parent (grille)
+Event listerner : [délégation](https://learn.jquery.com/events/event-delegation/) au parent (grille)
 
 ```js [1|2]
 $searchResult.on('click', '.brewery-card', function () {
@@ -153,7 +167,7 @@ $.each(fetchedFiltered, function (index, brewery) {
 
 ====
 
-# La recherche 
+# La recherche
 
 --
 
@@ -313,14 +327,14 @@ $.each(fetchedFiltered, function (index, brewery) {
 
 ## Limites & suites
 
-● Pas de rate limiting ni de cache côté client → risque quota/API down  
-● Matching exact (ville/état/type) requis → pas de tolérance aux fautes ni regex OBDB  
-● Recherche incrémentale évitée pour préserver les quotas → bouton unique aujourd'hui  
-● Middleware de throttling/caching identifié comme évolution future
+- Pas de rate limiting ni de cache côté client → risque quota/API down
+- Matching exact (ville/état/type) requis → pas de tolérance aux fautes ni regex OBDB
+- Recherche incrémentale évitée pour préserver les quotas → bouton unique aujourd'hui
+- Middleware de throttling/caching identifié comme évolution future
 
 ====
 
-# La carte 
+# La carte
 
 --
 
@@ -409,3 +423,15 @@ function displayBreweryDetails(brewery) {
   setBreweryMarker(brewery);
 }
 ```
+
+====
+
+# Futur
+
+- Pagination sur les réponses
+- Géolocalisation
+- Responsive
+
+====
+
+# Questions ?
