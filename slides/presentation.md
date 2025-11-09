@@ -36,6 +36,12 @@ Application monopage (SPA)
 - [Leaflet](https://leafletjs.com/)
 - [jQuery](https://jquery.com/)
 
+--
+
+## Les choix techniques
+
+Utilisation de [github](https://github.com/syl-cha/hopspot)
+
 ====
 
 # La grille
