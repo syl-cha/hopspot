@@ -17,17 +17,10 @@ export async function getFiltered(
   city,
   state,
   country = baseApi_country,
-  optional 
+  optional
 ) {
   let full_url =
-    baseApi_url +
-    endpoint +
-    '?by_city=' +
-    city +
-    '&by_state=' +
-    state +
-    '&by_country=' +
-    country;
+    baseApi_url + endpoint + '?by_city=' + city + '&by_state=' + state + '&by_country=' + country;
   console.log('Fetching all data from: ' + full_url);
   return sendRequest(full_url, 'GET_FILTERED');
 }
@@ -48,10 +41,8 @@ export async function searchApi(searchQuery, endpoint = 'breweries') {
   return sendRequest(full_url, 'SEARCH_API');
 }
 
-
 export async function getMetadata(endpoint = 'breweries') {
-  let full_url =
-    baseApi_url + endpoint + '/meta' + '?by_country=' + baseApi_country;
+  let full_url = baseApi_url + endpoint + '/meta' + '?by_country=' + baseApi_country;
   console.log('Fetching all data from: ' + full_url);
   return sendRequest(full_url, 'GET_META');
 }
